@@ -1,0 +1,17 @@
+#!/bin/bash
+
+help() {
+  echo "Usage:"
+  echo "  zmicro fail2ban <args ...>"
+  echo ""
+}
+
+core() {
+  sudo fail2ban "$@"
+}
+
+run() {
+  core "$@"
+}
+
+run "$@"

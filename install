@@ -1,0 +1,27 @@
+#!/bin/bash
+
+help() {
+  echo "Usage:"
+  echo "  zmicro package install fail2ban <args...>"
+  echo ""
+}
+
+core() {
+  if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+    help
+    exit 0
+  fi
+
+  which fail2ban >>/dev/null 2>&1
+  if [ "$?" != "0" ]; then
+    pm install -y fail2ban
+  fi
+
+  log::success "install fail2ban success."
+}
+
+run() {
+  core $@
+}
+
+run $@
